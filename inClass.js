@@ -39,3 +39,8 @@ const users = [
   users.forEach((user) => {
     console.log(user.name);
   });
+
+  //u of users example
+  for(let u of users) {
+    console.log(u.name);
+  }
