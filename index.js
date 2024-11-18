@@ -54,7 +54,7 @@ console.log(nextNum);
 // There will only be 4 cells per row.
 // There will be no escaped characters other than “\n”.
 
-const csvData = "42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor's Assistant,26";
+const csvData = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor's Assistant,26";
 
 let cell1 = '';
 let cell2 = '';
