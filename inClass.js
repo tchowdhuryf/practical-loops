@@ -40,7 +40,7 @@ const users = [
     console.log(user.name);
   });
 
-  //u of users example
+  //u of users example 
   for(let u of users) {
     console.log(u.name);
   }
