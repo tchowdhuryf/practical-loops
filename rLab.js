@@ -111,3 +111,62 @@ console.log(""); //spacing between the parts
 //  * Convert these keys to all lowercase letters for consistency.
 // Store these objects in an array, in the order that they were originally listed.
 // Since the heading for each column will be stored in the object keys, you do not need to create an object for the heading row itself.
+
+//resetting all variables
+rows = [];
+currentRow = [];
+numColumns = 0;
+currentCell = 1;  
+currentChar = 0;  
+
+while (currentChar < csvData.length) {
+    const char = csvData[currentChar];
+    
+    if (char === ',') {
+        currentCell++;
+    } else if (char === '\n' || (char === '\r' && csvData[currentChar + 1] === '\n')) {
+        rows.push(currentRow);
+        currentRow = [];
+        currentCell = 1;
+
+        if (char === '\r') {
+            currentChar++;
+        }
+    } else {
+        if (currentRow.length === 0 && currentCell === 1 && char !== ',') {
+            let firstRow = csvData.split('\n')[0].split(',');
+            numColumns = firstRow.length;
+        }
+        currentRow[currentCell - 1] = (currentRow[currentCell - 1] || '') + char;
+    }
+
+    currentChar++;
+}
+
+if (currentRow.length > 0) {
+    rows.push(currentRow);
+}
+
+//changing the data to objects with the first row as keys for objects
+let header = rows[0];
+let dataRows = rows.slice(1);
+
+let newFormat = dataRows.map(row => {
+    let obj = {};
+    row.forEach((value, index) => {
+        obj[header[index].toLowerCase()] = value;
+    });
+    return obj;
+});
+
+console.log(newFormat); //not printing the last line properly
+
+console.log(""); //spacing between the parts
+
+// Part 4: Sorting and Manipulating Data
+// Remove the last element from the sorted array.
+// Insert the following object at index 1:
+// { id: "48", name: "Barry", occupation: "Runner", age: "25" }
+// Add the following object to the end of the array:
+// { id: "7", name: "Bilbo", occupation: "None", age: "111" }
+// Finally, use the values of each object within the array and the array's length property to calculate the average age of the group. This calculation should be accomplished using a loop.
