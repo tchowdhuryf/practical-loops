@@ -186,7 +186,6 @@ newFormat.splice(1, 0, {id: "48", name: "Barry", occupation: "Runner", age: "25"
 console.log(newFormat);
 console.log("")
 
-
 // adding { id: "7", name: "Bilbo", occupation: "None", age: "111" } at last index
 newFormat.push({ id: "7", name: "Bilbo", occupation: "None", age: "111" });
 console.log(newFormat);
@@ -195,7 +194,7 @@ console.log("")
 // calculating the average age of the group
 let sum = 0;
 let avg = 0;
-countObj = 0;
+let countObj = 0;
 
 for (let i = 0; i < newFormat.length; i++) {
     sum += parseInt(newFormat[i].age); // converting obj data from string -> number
