@@ -112,7 +112,7 @@ console.log(""); //spacing between the parts
 // Store these objects in an array, in the order that they were originally listed.
 // Since the heading for each column will be stored in the object keys, you do not need to create an object for the heading row itself.
 
-//resetting all variables
+// resetting all variables
 rows = [];
 currentRow = [];
 numColumns = 0;
@@ -147,7 +147,7 @@ if (currentRow.length > 0) {
     rows.push(currentRow);
 }
 
-//changing the data to objects with the first row as keys for objects
+// changing the data to objects with the first row as keys for objects
 let header = rows[0];
 let dataRows = rows.slice(1);
 
@@ -159,9 +159,13 @@ let newFormat = dataRows.map(row => {
     return obj;
 });
 
-console.log(newFormat); //not printing the last line properly
+console.log(newFormat); // not printing the last row properly because of the terminal width
 
-console.log(""); //spacing between the parts
+console.log(""); // spacing between the parts
+
+// debugging for the last row printing differently
+console.log( { id: 'Debug', name: 'Bruce', occupation: 'Doc', age: '41' }) 
+console.log( { id: 'Debug', name: 'Bruce', occupation: "Doctor's Assistant", age: '41' }) // conclusion - terminal width size makes the output look different
 
 // Part 4: Sorting and Manipulating Data
 // Remove the last element from the sorted array.
@@ -170,3 +174,34 @@ console.log(""); //spacing between the parts
 // Add the following object to the end of the array:
 // { id: "7", name: "Bilbo", occupation: "None", age: "111" }
 // Finally, use the values of each object within the array and the array's length property to calculate the average age of the group. This calculation should be accomplished using a loop.
+
+// Removing the last element from the sorted array
+console.log("")
+newFormat.pop();
+console.log(newFormat);
+
+// inserting { id: "48", name: "Barry", occupation: "Runner", age: "25" } at index 1
+console.log("")
+newFormat.splice(1, 0, {id: "48", name: "Barry", occupation: "Runner", age: "25"});
+console.log(newFormat);
+console.log("")
+
+
+// adding { id: "7", name: "Bilbo", occupation: "None", age: "111" } at last index
+newFormat.push({ id: "7", name: "Bilbo", occupation: "None", age: "111" });
+console.log(newFormat);
+console.log("")
+
+// calculating the average age of the group
+let sum = 0;
+let avg = 0;
+countObj = 0;
+
+for (let i = 0; i < newFormat.length; i++) {
+    sum += parseInt(newFormat[i].age); // converting obj data from string -> number
+    countObj++;
+}
+
+avg = sum / countObj; // calculating the average age
+
+console.log(`The average age of the group is: ${avg}`);
